@@ -1,0 +1,13 @@
+.bash_history
+.mysql_history
+.viminfo
+.ssh
+.vscode
+.vim
+.gitconfig
+.ftpconfig
+Thumbs.db
+.composer/
+*.DS_Store
+.DS_Store
+.editorconfig
