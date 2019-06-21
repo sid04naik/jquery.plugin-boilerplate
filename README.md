@@ -3,6 +3,16 @@
 Simple and opinionated jquery plugin boilerplate.
 
 Below is the complete guide on this boilerplate.
+---
+## Prerequisites
+* JQuery.
+
+```js
+// required plugins.
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+```
+## [Documentation](https://sid04naik.github.io/jquery.plugin-boilerplate/)
+Download jquery.plugin-boilerplate by clicking on [Download Plugin](https://github.com/sid04naik/jquery.plugin-boilerplate).
 
 The semi-colon before the function invocation is a safety net against concatenated scripts and/or other plugins which may not be closed properly.
 `undefined` is used because the undefined global variable in ECMAScript 3 is mutable. (ie. it can be changed by someone else). Because we don't pass a value to undefined when the anonymous function is invoked, we ensure that undefined is truly undefined.
@@ -23,7 +33,7 @@ Store the name of the plugin in the `pluginName` variable. This variable is used
 More: http://api.jquery.com/jquery.data/
 
 ```js
-var pluginName = 'PluginName';
+var pluginName = 'pluginName';
 ```
 
 The `Plugin` constructor, builds a new instance of the plugin for the DOM node(s) that the plugin is called on. For example, `$('selector').pluginName();` creates a new instance of pluginName for the given selector.
@@ -37,7 +47,7 @@ Provide local access to the DOM node(s) that are called the plugin, as well loca
 ```js
 this._element    = element;
 this._pluginName = pluginName;
-this._defaults   = $.fn.myPluginName.defaults;
+this._defaults   = $.fn[myPluginName].defaults;
 /*
 The "$.extend" method merges the contents of two or more objects, and stores the result in the first object. The first object is empty so that we don't alter the default options for future instances of the plugin.
 More: http://api.jquery.com/jquery.extend/
@@ -164,7 +174,7 @@ Create a lightweight plugin wrapper around the `Plugin` constructor, preventing 
 More: http://learn.jquery.com/plugins/basic-plugin-creation/
 
 ```js
-$.fn.myPluginName = function (options) {
+$.fn[pluginName] = function (options) {
     this.each(function () {
         if (!$.data(this, "plugin_" + pluginName)) {
 /*
@@ -188,7 +198,7 @@ For example, the user could set the "property" value once for all instances of t
 More: http://learn.jquery.com/plugins/advanced-plugin-concepts/
 
 ```js
-$.fn.myPluginName.defaults = {
+$.fn[pluginName].defaults = {
     property: 'value',
     onComplete: null
 };

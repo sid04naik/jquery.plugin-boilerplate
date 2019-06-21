@@ -17,7 +17,7 @@
 		Store the name of the plugin in the "pluginName" variable. This variable is used in the "Plugin" constructor below, as well as in the plugin wrapper to construct the key for the "$.data" method.
 		More: http://api.jquery.com/jquery.data/
 	*/
-	var pluginName = 'PluginName';
+	var pluginName = 'pluginName';
 	/*
 		The "Plugin" constructor, builds a new instance of the plugin for the DOM node(s) that the plugin is called on.
 		For example, "$('selector').pluginName();" creates a new instance of pluginName for the given selector.
@@ -28,7 +28,7 @@
         */
 		this._element    = element;
 		this._pluginName = pluginName;
-		this._defaults   = $.fn.myPluginName.defaults;
+		this._defaults   = $.fn[pluginName].defaults;
 		/*
 			The "$.extend" method merges the contents of two or more objects, and stores the result in the first object. The first object is empty so that we don't alter the default options for future instances of the plugin.
 			More: http://api.jquery.com/jquery.extend/
@@ -121,7 +121,7 @@
         Create a lightweight plugin wrapper around the "Plugin" constructor, preventing against multiple instantiations.
         More: http://learn.jquery.com/plugins/basic-plugin-creation/
     */
-	$.fn.myPluginName = function (options) {
+	$.fn[pluginName] = function (options) {
 		this.each(function () {
 			if (!$.data(this, "plugin_" + pluginName)) {
                 /*
@@ -143,7 +143,7 @@
         "$.fn.pluginName.defaults.property = 'myValue';". Then, every time plugin is initialized, "property" will be set to "myValue".
         More: http://learn.jquery.com/plugins/advanced-plugin-concepts/
     */
-	$.fn.myPluginName.defaults = {
+	$.fn[pluginName].defaults = {
 		property  : 'value',
 		onComplete: null
 	};

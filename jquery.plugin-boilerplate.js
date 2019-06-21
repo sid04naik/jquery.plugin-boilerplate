@@ -4,11 +4,11 @@
 */
 ; (function ($, window, document, undefined) {
 	"use strict";
-	var pluginName = 'PluginName';
+	var pluginName = 'pluginName';
 	function Plugin(element, options) {
 		this._element    = element;
 		this._pluginName = pluginName;
-		this._defaults   = $.fn.myPluginName.defaults;
+		this._defaults   = $.fn[pluginName].defaults;
 		this._settings 	 = $.extend({}, this._defaults, options);
 		this._init();
 	}
@@ -54,7 +54,7 @@
 		}
 	});
 	//Plugin wrapper
-	$.fn.myPluginName = function (options) {
+	$.fn[pluginName] = function (options) {
 		this.each(function () {
 			if (!$.data(this, "plugin_" + pluginName)) {
 				$.data(this, "plugin_" + pluginName, new Plugin(this, options));
@@ -62,7 +62,7 @@
 		});
 		return this;
 	};
-	$.fn.myPluginName.defaults = {
+	$.fn[pluginName].defaults = {
 		property  : 'value',
 		onComplete: null
 	};
