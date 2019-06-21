@@ -1,56 +1,58 @@
 /*
-    Plugin Name: Name of the plugin.
-    Description:
-    Brief description about plugin.
+	Plugin Name: Name of the plugin.
+	Description: Brief description about plugin.
 */
 ; (function ($, window, document, undefined) {
-
 	var pluginName = 'PluginName';
-
 	function Plugin(element, options) {
-
 		this._element    = element;
 		this._pluginName = pluginName;
 		this._defaults   = $.fn.myPluginName.defaults;
-		this._settings   = $.extend({}, this._defaults, options);
-		this._initialize();
+		this._settings 	 = $.extend({}, this._defaults, options);
+		this._init();
 	}
-
+	// Avoid Plugin.prototype conflicts
 	$.extend(Plugin.prototype, {
-
-		_initialize: function () {
-			this._buildCache();
+		// Initialization logic
+		_init: function () {
+			this._build();
 			this._bindEvents();
 		},
-		_destroy: function () {
-			this._unbindEvents();
-			this.$_element.removeData();
-		},
-		_buildCache: function () {
+		// Cache DOM nodes for performance
+		_build: function () {
 			this.$_element = $(this._element);
 		},
+		// Bind events that trigger methods
 		_bindEvents: function () {
 			var plugin = this;
 			plugin.$_element.on('click' + '.' + plugin._pluginName, function () {
 				plugin._someOtherFunction.call(plugin);
 			});
 		},
+		// Unbind events that trigger methods
 		_unbindEvents: function () {
 			this.$_element.off('.' + this._pluginName);
 		},
+		// Remove plugin instance completely
+		_destroy: function () {
+			this._unbindEvents();
+			this.$_element.removeData();
+		},
+		// Create custom methods
 		_someOtherFunction: function () {
 			console.log('Function is called.');
 			this._callback();
 		},
+		// Callback methods
 		_callback: function () {
+			// Cache onComplete option
 			var onComplete = this._settings.onComplete;
 			if ($.isFunction(onComplete)) {
 				onComplete.call(this._element);
 			}
 		}
-
 	});
-
+	//Plugin wrapper
 	$.fn.myPluginName = function (options) {
 		this.each(function () {
 			if (!$.data(this, "plugin_" + pluginName)) {
@@ -59,10 +61,8 @@
 		});
 		return this;
 	};
-
 	$.fn.myPluginName.defaults = {
 		property  : 'value',
 		onComplete: null
 	};
-
 })(jQuery, window, document);
