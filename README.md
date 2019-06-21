@@ -57,11 +57,10 @@ All the custom functions will come here. Below are some of the default functions
 
 ```js
 _init: function () {
-    /*
-		Create additional methods below and call them via "this.myFunction(arg1, arg2)", ie: "this._build();".
-		Note: You can access the DOM node(s), pluginName, default plugin options and custom plugin options for a each instance of the plugin by using the variables "this._element", "this._pluginName", "this._defaults" and "this._settings" created in the "Plugin" constructor function (as shown in the _build
-		method below).
-    */
+/*
+Create additional methods below and call them via "this.myFunction(arg1, arg2)", ie: "this._build();".
+Note: You can access the DOM node(s), pluginName, default plugin options and custom plugin options for a each instance of the plugin by using the variables "this._element", "this._pluginName", "this._defaults" and "this._settings" created in the "Plugin" constructor function (as shown in the _build method below).
+*/
     this._build();
     this._bindEvents();
 },
@@ -71,10 +70,10 @@ Cache DOM nodes for performing some tasks.
 
 ```js
 _build: function () {
-    /*
-		Create variable(s) that can be accessed by other plugin functions. For example, "this.$_element = $(this._element);" will cache a jQuery reference to the element that initialized the plugin.
-		Cached variables can then be used in other methods.
-    */
+/*
+Create variable(s) that can be accessed by other plugin functions. For example, "this.$_element = $(this._element);" will cache a jQuery reference to the element that initialized the plugin.
+Cached variables can then be used in other methods.
+*/
     this.$_element = $(this._element);
 },
 ```
@@ -84,17 +83,17 @@ Bind events that trigger methods
 ```js
 _bindEvents: function () {
     var plugin = this;
-    /*
-		Bind event(s) handlers that trigger other functions, ie: "plugin.$_element.on('click', function() {});".
-		Note the use of the cached variable we created in the _build method.
-		All events are namespaced, ie: ".on('click'+'.'+this._pluginName', function() {});".
-		This allows us to unbind plugin-specific events using the _unbindEvents method below.
-    */
+/*
+Bind event(s) handlers that trigger other functions, ie: "plugin.$_element.on('click', function() {});".
+Note the use of the cached variable we created in the _build method.
+All events are namespaced, ie: ".on('click'+'.'+this._pluginName', function() {});".
+This allows us to unbind plugin-specific events using the _unbindEvents method below.
+*/
     plugin.$_element.on('click' + '.' + plugin._pluginName, function () {
-        /*
-            Use the "call" method to call the function. ie: "_someOtherFunction", the "this" keyword refers to the plugin instance, not the event handler.
-            More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
-        */
+/*
+Use the "call" method to call the function. ie: "_someOtherFunction", the "this" keyword refers to the plugin instance, not the event handler.
+More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
+*/
         plugin._someOtherFunction.call(plugin);
     });
 },
@@ -104,9 +103,9 @@ Unbind events that trigger methods
 
 ```js
 _unbindEvents: function () {
-	/*
-        Unbind all events in our plugin's namespace that are attached to "this.$_element".
-    */
+/*
+Unbind all events in our plugin's namespace that are attached to "this.$_element".
+*/
     this.$_element.off('.' + this._pluginName);
 },
 ```
@@ -115,17 +114,17 @@ Remove plugin instance completely
 
 ```js
 _destroy: function () {
-	/*
-		The _destroy method unbinds all events for the specific instance of the plugin, then removes all plugin data that was stored in the plugin instance using jQuery's .removeData method.
-		Since we store data for each instance of the plugin in its instantiating element using the $.data method (as explained in the plugin wrapper below), we can call methods directly on the instance outside of the plugin initialization, ie: $('selector').data('plugin_myPluginName')._someOtherFunction();
-		Consequently, the _destroy method can be called using: $('selector').data('plugin_myPluginName')._destroy();
-	*/
+/*
+The _destroy method unbinds all events for the specific instance of the plugin, then removes all plugin data that was stored in the plugin instance using jQuery's .removeData method.
+Since we store data for each instance of the plugin in its instantiating element using the $.data method (as explained in the plugin wrapper below), we can call methods directly on the instance outside of the plugin initialization, ie: $('selector').data('plugin_myPluginName')._someOtherFunction();
+Consequently, the _destroy method can be called using: $('selector').data('plugin_myPluginName')._destroy();
+*/
     this._unbindEvents();
     this.$_element.removeData();
 },
 ```
 
-`_someOtherFunction` is an example of a custom method in your plugin. Each method should perform a specific task. For example, the _build method exists only to create variables for other methods to access. The `_bindEvents` method exists only to bind events to event handlers that trigger other methods.
+`_someOtherFunction` is an example of a custom method in your plugin. Each method should perform a specific task. For example, the `_build` method exists only to create variables for other methods to access. The `_bindEvents` method exists only to bind events to event handlers that trigger other methods.
 Creating custom plugin methods this way is less confusing (separation of concerns) and makes your code easier to test.
 
 Create custom methods
@@ -144,11 +143,11 @@ _callback: function () {
     // Cache onComplete option
     var onComplete = this._settings.onComplete;
     if ($.isFunction(onComplete)) {
- 		/*
-			Use the "call" method so that the onComplete callback function the "this" keyword refers to the
-			specific DOM node that called the plugin.
-			More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
-		*/
+/*
+Use the "call" method so that the onComplete callback function the "this" keyword refers to the
+specific DOM node that called the plugin.
+More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
+*/
         onComplete.call(this._element);
     }
 }
@@ -162,17 +161,17 @@ More: http://learn.jquery.com/plugins/basic-plugin-creation/
 $.fn.myPluginName = function (options) {
     this.each(function () {
         if (!$.data(this, "plugin_" + pluginName)) {
-            /*
-				Use "$.data" to save each instance of the plugin in case the user wants to modify it. Using "$.data" in this way ensures the data is removed when the DOM element(s) are
-				removed via jQuery methods, as well as when the user leaves the page. It's a smart way to prevent memory leaks.
-				More: http://api.jquery.com/jquery.data/
-            */
+/*
+Use "$.data" to save each instance of the plugin in case the user wants to modify it. Using "$.data" in this way ensures the data is removed when the DOM element(s) are
+removed via jQuery methods, as well as when the user leaves the page. It's a smart way to prevent memory leaks.
+More: http://api.jquery.com/jquery.data/
+*/
             $.data(this, "plugin_" + pluginName, new Plugin(this, options));
         }
     });
-    /*
-       "return this;" returns the original jQuery object. This allows additional jQuery methods to be chained.
-    */
+/*
+"return this;" returns the original jQuery object. This allows additional jQuery methods to be chained.
+*/
     return this;
 };
 ```
