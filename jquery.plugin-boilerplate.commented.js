@@ -10,6 +10,10 @@
 */
 ; (function ($, window, document, undefined) {
 	/*
+	The purpose of "use strict" is to indicate that the code should be executed in "strict mode". With strict mode, you can not, for example, use undeclared variables.
+	*/
+	"use strict";
+	/*
 		Store the name of the plugin in the "pluginName" variable. This variable is used in the "Plugin" constructor below, as well as in the plugin wrapper to construct the key for the "$.data" method.
 		More: http://api.jquery.com/jquery.data/
 	*/

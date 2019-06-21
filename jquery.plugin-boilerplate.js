@@ -3,6 +3,7 @@
 	Description: Brief description about plugin.
 */
 ; (function ($, window, document, undefined) {
+	"use strict";
 	var pluginName = 'PluginName';
 	function Plugin(element, options) {
 		this._element    = element;
