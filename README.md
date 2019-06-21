@@ -3,6 +3,7 @@
 Simple and opinionated jquery plugin boilerplate.
 
 Below is the complete guide on this boilerplate.
+
 ---
 ## Prerequisites
 * JQuery.
