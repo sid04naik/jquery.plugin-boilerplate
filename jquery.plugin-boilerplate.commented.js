@@ -18,6 +18,7 @@
 		More: http://api.jquery.com/jquery.data/
 	*/
 	var pluginName = 'pluginName';
+	var plugin;
 	/*
 		The "Plugin" constructor, builds a new instance of the plugin for the DOM node(s) that the plugin is called on.
 		For example, "$('selector').pluginName();" creates a new instance of pluginName for the given selector.
@@ -49,6 +50,7 @@
                 Note: You can access the DOM node(s), pluginName, default plugin options and custom plugin options for a each instance of the plugin by using the variables "this._element", "this._pluginName", "this._defaults" and "this._settings" created in the "Plugin" constructor function (as shown in the _build
                 method below).
             */
+		    plugin = this;
 			this._build();
 			this._bindEvents();
 		},
@@ -62,7 +64,6 @@
 		},
 		// Bind events that trigger methods
 		_bindEvents: function () {
-			var plugin = this;
             /*
 				Bind event(s) handlers that trigger other functions, ie: "plugin.$_element.on('click', function() {});".
 				Note the use of the cached variable we created in the _build method.

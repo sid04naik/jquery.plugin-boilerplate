@@ -5,6 +5,7 @@
 ; (function ($, window, document, undefined) {
 	"use strict";
 	var pluginName = 'pluginName';
+	var plugin;
 	function Plugin(element, options) {
 		this._element    = element;
 		this._pluginName = pluginName;
@@ -16,6 +17,7 @@
 	$.extend(Plugin.prototype, {
 		// Initialization logic
 		_init: function () {
+			plugin = this;
 			this._build();
 			this._bindEvents();
 		},
@@ -25,7 +27,6 @@
 		},
 		// Bind events that trigger methods
 		_bindEvents: function () {
-			var plugin = this;
 			plugin.$_element.on('click' + '.' + plugin._pluginName, function () {
 				plugin._someOtherFunction.call(plugin);
 			});
