@@ -108,13 +108,13 @@
 		_callback: function () {
 			// Cache onComplete option
 			var onComplete = this._settings.onComplete;
-			if ($.isFunction(onComplete)) {
+			if (typeof onComplete === "function") {
                 /*
                     Use the "call" method so that the onComplete callback function the "this" keyword refers to the
                     specific DOM node that called the plugin.
                     More: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
                 */
-				onComplete.call(this._element);
+				onComplete(this._element);
 			}
 		}
 	});

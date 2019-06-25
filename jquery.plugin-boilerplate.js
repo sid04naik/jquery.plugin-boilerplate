@@ -49,8 +49,8 @@
 		_callback: function () {
 			// Cache onComplete option
 			var onComplete = this._settings.onComplete;
-			if ($.isFunction(onComplete)) {
-				onComplete.call(this._element);
+			if (typeof onComplete === "function") {
+				onComplete(this._element);
 			}
 		}
 	});
