@@ -206,3 +206,6 @@ $.fn[pluginName].defaults = {
 };
 })(jQuery, window, document); //closing the closure 
 ```
+
+## LICENSE
+[The Unlicense](https://github.com/sid04naik/jquery.plugin-boilerplate/blob/master/LICENSE)
