@@ -4,8 +4,7 @@
 */
 ; (function ($, window, document, undefined) {
 	"use strict";
-	var pluginName = 'pluginName';
-	var plugin;
+	let plugin,pluginName = 'pluginName';
 	function Plugin(element, options) {
 		this._element    = element;
 		this._pluginName = pluginName;
@@ -48,7 +47,7 @@
 		// Callback methods
 		_callback: function () {
 			// Cache onComplete option
-			var onComplete = this._settings.onComplete;
+			let onComplete = this._settings.onComplete;
 			if (typeof onComplete === "function") {
 				onComplete(this._element);
 			}

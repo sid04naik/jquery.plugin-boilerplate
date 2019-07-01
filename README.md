@@ -34,8 +34,7 @@ Store the name of the plugin in the `pluginName` variable. This variable is used
 More: http://api.jquery.com/jquery.data/
 
 ```js
-var pluginName = 'pluginName';
-var plugin;
+let plugin,pluginName = 'pluginName';
 ```
 
 The `Plugin` constructor, builds a new instance of the plugin for the DOM node(s) that the plugin is called on. For example, `$('selector').pluginName();` creates a new instance of pluginName for the given selector.
@@ -159,7 +158,7 @@ Callback function
 ```js
 _callback: function () {
     // Cache onComplete option
-    var onComplete = this._settings.onComplete;
+    let onComplete = this._settings.onComplete;
     if ($.isFunction(onComplete)) {
 /*
 Use the "call" method so that the onComplete callback function the "this" keyword refers to the

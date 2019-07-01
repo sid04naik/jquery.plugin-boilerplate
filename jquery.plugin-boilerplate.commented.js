@@ -17,8 +17,7 @@
 		Store the name of the plugin in the "pluginName" variable. This variable is used in the "Plugin" constructor below, as well as in the plugin wrapper to construct the key for the "$.data" method.
 		More: http://api.jquery.com/jquery.data/
 	*/
-	var pluginName = 'pluginName';
-	var plugin;
+	let plugin,pluginName = 'pluginName';
 	/*
 		The "Plugin" constructor, builds a new instance of the plugin for the DOM node(s) that the plugin is called on.
 		For example, "$('selector').pluginName();" creates a new instance of pluginName for the given selector.
@@ -107,7 +106,7 @@
 		// Callback methods
 		_callback: function () {
 			// Cache onComplete option
-			var onComplete = this._settings.onComplete;
+			let onComplete = this._settings.onComplete;
 			if (typeof onComplete === "function") {
                 /*
                     Use the "call" method so that the onComplete callback function the "this" keyword refers to the
