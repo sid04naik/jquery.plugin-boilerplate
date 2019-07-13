@@ -7,11 +7,5 @@
   },
   "description": "Simple and opinionated jquery plugin boilerplate.",
   "author": "Siddhant",
-  "version": "1.0.0",
-  "devDependencies": {
-    "jshint": "^2.10.2"
-  },
-  "scripts": {
-    "test": "./node_modules/jshint/bin/jshint hello.js"
-  }
+  "version": "1.0.0"
 }
