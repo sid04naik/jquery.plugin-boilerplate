@@ -13,7 +13,7 @@ Below is the complete guide on this boilerplate.
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 ```
 ## [Documentation](https://sid04naik.github.io/jquery.plugin-boilerplate/)
-Download jquery.plugin-boilerplate by clicking on [Download Plugin](https://github.com/sid04naik/jquery.plugin-boilerplate).
+Download jquery.plugin-boilerplate by clicking on [Download Plugin](https://github.com/sid04naik/jquery.plugin-boilerplate/releases/tag/v1.0.0).
 
 The semi-colon before the function invocation is a safety net against concatenated scripts and/or other plugins which may not be closed properly.
 `undefined` is used because the undefined global variable in ECMAScript 3 is mutable. (ie. it can be changed by someone else). Because we don't pass a value to undefined when the anonymous function is invoked, we ensure that undefined is truly undefined.
