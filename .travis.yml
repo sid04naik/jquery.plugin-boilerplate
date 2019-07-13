@@ -3,3 +3,4 @@ node_js:
 - "stable"
 sevices:
 - mongodb
+script: ./run_build.sh
