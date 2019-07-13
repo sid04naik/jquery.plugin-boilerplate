@@ -1,7 +1,5 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
-script:
-- bundle exec rake build
-- bundle exec rake builddoc
+language: node_js
+node_js:
+  - "stable"
+ sevices:
+  - mongodb
