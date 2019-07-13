@@ -3,4 +3,3 @@ node_js:
 - "stable"
 sevices:
 - mongodb
-script: npm test
