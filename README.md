@@ -34,7 +34,8 @@ Store the name of the plugin in the `pluginName` variable. This variable is used
 More: http://api.jquery.com/jquery.data/
 
 ```js
-let plugin,pluginName = 'pluginName';
+let plugin;
+const PLUGIN_NAME = 'pluginName';
 ```
 
 The `Plugin` constructor, builds a new instance of the plugin for the DOM node(s) that the plugin is called on. For example, `$('selector').pluginName();` creates a new instance of pluginName for the given selector.
@@ -47,8 +48,8 @@ Provide local access to the DOM node(s) that are called the plugin, as well loca
 
 ```js
 this._element    = element;
-this._pluginName = pluginName;
-this._defaults   = $.fn[myPluginName].defaults;
+this._pluginName = PLUGIN_NAME;
+this._defaults   = $.fn[PLUGIN_NAME].defaults;
 /*
 The "$.extend" method merges the contents of two or more objects, and stores the result in the first object. The first object is empty so that we don't alter the default options for future instances of the plugin.
 More: http://api.jquery.com/jquery.extend/
@@ -175,15 +176,15 @@ Create a lightweight plugin wrapper around the `Plugin` constructor, preventing 
 More: http://learn.jquery.com/plugins/basic-plugin-creation/
 
 ```js
-$.fn[pluginName] = function (options) {
+$.fn[PLUGIN_NAME] = function (options) {
     this.each(function () {
-        if (!$.data(this, "plugin_" + pluginName)) {
+        if (!$.data(this, "plugin_" + PLUGIN_NAME)) {
 /*
 Use "$.data" to save each instance of the plugin in case the user wants to modify it. Using "$.data" in this way ensures the data is removed when the DOM element(s) are
 removed via jQuery methods, as well as when the user leaves the page. It's a smart way to prevent memory leaks.
 More: http://api.jquery.com/jquery.data/
 */
-            $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+            $.data(this, "plugin_" + PLUGIN_NAME, new Plugin(this, options));
         }
     });
 /*
@@ -199,7 +200,7 @@ For example, the user could set the "property" value once for all instances of t
 More: http://learn.jquery.com/plugins/advanced-plugin-concepts/
 
 ```js
-$.fn[pluginName].defaults = {
+$.fn[PLUGIN_NAME].defaults = {
     property: 'value',
     onComplete: null
 };
