@@ -30,7 +30,7 @@ The purpose of `use strict` is to indicate that the code should be executed in "
 "use strict";
 ```
 
-Store the name of the plugin in the `pluginName` variable. This variable is used in the `Plugin` constructor below, as well as in the plugin wrapper to construct the key for the `$.data` method.
+Store the name of the plugin in the `PLUGIN_NAME` variable. This variable is used in the `Plugin` constructor below, as well as in the plugin wrapper to construct the key for the `$.data` method.
 More: http://api.jquery.com/jquery.data/
 
 ```js
@@ -196,7 +196,7 @@ More: http://api.jquery.com/jquery.data/
 
 Attach the default plugin options directly to the plugin object. This allows users to override default plugin options globally,instead of passing the same option(s) every time the plugin is initialized.
 For example, the user could set the "property" value once for all instances of the plugin with
-`$.fn.pluginName.defaults.property = 'myValue';`. Then, every time plugin is initialized, property" will be set to "myValue".
+`$.fn.PLUGIN_NAME.defaults.property = 'myValue';`. Then, every time plugin is initialized, property" will be set to "myValue".
 More: http://learn.jquery.com/plugins/advanced-plugin-concepts/
 
 ```js
@@ -204,7 +204,7 @@ $.fn[PLUGIN_NAME].defaults = {
     property: 'value',
     onComplete: null
 };
-})(jQuery, window, document); //closing the closure 
+})(jQuery, window, document); //closing the closure
 ```
 
 ## LICENSE
