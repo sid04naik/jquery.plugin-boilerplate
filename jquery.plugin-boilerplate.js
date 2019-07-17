@@ -4,11 +4,12 @@
 */
 ; (function ($, window, document, undefined) {
 	"use strict";
-	let plugin,pluginName = 'pluginName';
+	let plugin;
+	const PLUGIN_NAME = 'pluginName';
 	function Plugin(element, options) {
 		this._element    = element;
-		this._pluginName = pluginName;
-		this._defaults   = $.fn[pluginName].defaults;
+		this._pluginName = PLUGIN_NAME;
+		this._defaults   = $.fn[PLUGIN_NAME].defaults;
 		this._settings 	 = $.extend({}, this._defaults, options);
 		this._init();
 	}
@@ -54,15 +55,15 @@
 		}
 	});
 	//Plugin wrapper
-	$.fn[pluginName] = function (options) {
+	$.fn[PLUGIN_NAME] = function (options) {
 		this.each(function () {
-			if (!$.data(this, "plugin_" + pluginName)) {
-				$.data(this, "plugin_" + pluginName, new Plugin(this, options));
+			if (!$.data(this, "plugin_" + PLUGIN_NAME)) {
+				$.data(this, "plugin_" + PLUGIN_NAME, new Plugin(this, options));
 			}
 		});
 		return this;
 	};
-	$.fn[pluginName].defaults = {
+	$.fn[PLUGIN_NAME].defaults = {
 		property  : 'value',
 		onComplete: null
 	};
