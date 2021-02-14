@@ -1,4 +1,4 @@
-# jquery.plugin-boilerplate [![CodeFactor](https://www.codefactor.io/repository/github/sid04naik/jquery.plugin-boilerplate/badge)](https://www.codefactor.io/repository/github/sid04naik/jquery.plugin-boilerplate) [![Build Status](https://travis-ci.com/sid04naik/jquery.plugin-boilerplate.svg?branch=master)](https://travis-ci.com/sid04naik/jquery.plugin-boilerplate)
+# jquery.plugin-boilerplate
 
 Simple and opinionated jquery plugin boilerplate.
 
