@@ -4,7 +4,6 @@
 */
 ; (function ($, window, document, undefined) {
 	"use strict";
-	let plugin;
 	const PLUGIN_NAME = 'pluginName';
 	function Plugin(element, options) {
 		this._element    = element;
@@ -17,7 +16,6 @@
 	$.extend(Plugin.prototype, {
 		// Initialization logic
 		_init: function () {
-			plugin = this;
 			this._build();
 			this._bindEvents();
 		},
@@ -27,7 +25,8 @@
 		},
 		// Bind events that trigger methods
 		_bindEvents: function () {
-			plugin.$_element.on('click' + '.' + plugin._pluginName, function () {
+			let plugin = this; //reference to plugin's instance to be used in click event.
+			this.$_element.on('click' + '.' + this._pluginName, function () {
 				plugin._someOtherFunction.call(plugin);
 			});
 		},
@@ -42,7 +41,7 @@
 		},
 		// Create custom methods
 		_someOtherFunction: function () {
-			console.log('Function is called.');
+			console.log('Function is called. Clicked element:', this.$_element);
 			this._callback();
 		},
 		// Callback methods
